@@ -152,11 +152,21 @@ const RSVPForm = () => {
     // Using the provided WhatsApp QR link with the text parameter
     const whatsappUrl = `https://wa.me/qr/6RFCERSFATCJK1?text=${encodeURIComponent(message)}`;
     
-    // Small delay to show feedback
-    setTimeout(() => {
+    console.log('Submitting RSVP:', formData);
+    console.log('Redirecting to:', whatsappUrl);
+
+    // Using window.open for better compatibility in iframes and mobile
+    const win = window.open(whatsappUrl, '_blank');
+    
+    // Fallback if window.open is blocked
+    if (!win || win.closed || typeof win.closed === 'undefined') {
       window.location.href = whatsappUrl;
+    }
+
+    // Reset submitting state after a short delay
+    setTimeout(() => {
       setIsSubmitting(false);
-    }, 800);
+    }, 1000);
   };
 
   return (
