@@ -141,15 +141,22 @@ const RSVPForm = () => {
     personas: '1',
     contacto: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hola Néstor, confirmo mi asistencia a tu celebración de 50 años.\n\n*Nombre:* ${formData.nombre}\n*Número de personas:* ${formData.personas}\n*Contacto:* ${formData.contacto}`;
-    // Using the provided WhatsApp link. Note: appending text to a QR link might not work perfectly, 
-    // but we'll try to use the standard wa.me format if possible. 
-    // Since we only have the QR link, we'll use it as the destination.
+    setIsSubmitting(true);
+    
+    const message = `¡Hola Néstor! 👋\n\nConfirmo mi asistencia a tu celebración de 50 años.\n\n👤 *Nombre:* ${formData.nombre}\n👥 *Personas:* ${formData.personas}\n📞 *Contacto:* ${formData.contacto}\n\n¡Nos vemos pronto! 🥂`;
+    
+    // Using the provided WhatsApp QR link with the text parameter
     const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    
+    // Small delay to show feedback
+    setTimeout(() => {
+      window.location.href = whatsappUrl;
+      setIsSubmitting(false);
+    }, 800);
   };
 
   return (
@@ -163,6 +170,7 @@ const RSVPForm = () => {
           onChange={(e) => setFormData({...formData, nombre: e.target.value})}
           className="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors font-sans"
           placeholder="Tu nombre completo"
+          disabled={isSubmitting}
         />
       </div>
       <div className="space-y-2">
@@ -174,6 +182,7 @@ const RSVPForm = () => {
           value={formData.personas}
           onChange={(e) => setFormData({...formData, personas: e.target.value})}
           className="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors font-sans"
+          disabled={isSubmitting}
         />
       </div>
       <div className="space-y-2">
@@ -184,17 +193,30 @@ const RSVPForm = () => {
           value={formData.contacto}
           onChange={(e) => setFormData({...formData, contacto: e.target.value})}
           className="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors font-sans"
-          placeholder="Ej. +51 999 999 999"
+          placeholder="Ej. 999 999 999"
+          disabled={isSubmitting}
         />
       </div>
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         type="submit"
-        className="w-full py-4 bg-emerald-600 text-white rounded-full font-display tracking-widest uppercase text-sm hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-3"
+        disabled={isSubmitting}
+        className={`w-full py-4 rounded-full font-display tracking-widest uppercase text-sm transition-all shadow-lg flex items-center justify-center gap-3 ${
+          isSubmitting ? 'bg-emerald-800 text-white/50 cursor-not-allowed' : 'bg-emerald-600 text-white hover:bg-emerald-500 shadow-emerald-900/20'
+        }`}
       >
-        <MessageCircle size={20} />
-        Confirmar asistencia
+        {isSubmitting ? (
+          <>
+            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            Redirigiendo...
+          </>
+        ) : (
+          <>
+            <MessageCircle size={20} />
+            Confirmar por WhatsApp
+          </>
+        )}
       </motion.button>
     </form>
   );
