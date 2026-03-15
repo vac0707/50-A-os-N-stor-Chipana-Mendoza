@@ -150,7 +150,7 @@ const RSVPForm = () => {
     const message = `¡Hola Néstor Chipana Mendoza! 👋\n\nQuiero confirmar mi asistencia :\n\n👤 Nombre: ${formData.nombre}\n📱 Celular: ${formData.contacto}\n👨👩👧👦 Personas: ${formData.personas}\n\n¡Muchas gracias!`;
     
     // Using the provided WhatsApp QR link with the text parameter
-    const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/qr/6RFCERSFATCJK1?text=${encodeURIComponent(message)}`;
     
     // Small delay to show feedback
     setTimeout(() => {
