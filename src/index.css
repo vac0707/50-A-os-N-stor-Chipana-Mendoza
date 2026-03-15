@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Cinzel", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-gold: #D4AF37;
+  --color-gold-light: #F9E29C;
+  --color-gold-dark: #996515;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased selection:bg-gold/30;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-wider;
+  }
+}
+
+.gold-gradient {
+  background: linear-gradient(45deg, #996515 0%, #D4AF37 50%, #F9E29C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-image: linear-gradient(45deg, #996515, #D4AF37, #F9E29C) 1;
+}
+
+.decorative-line {
+  @apply h-px w-full max-w-[200px] mx-auto my-8;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
