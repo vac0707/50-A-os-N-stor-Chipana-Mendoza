@@ -147,7 +147,7 @@ const RSVPForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const message = `¡Hola Néstor! 👋\n\nConfirmo mi asistencia a tu celebración de 50 años.\n\n👤 *Nombre:* ${formData.nombre}\n👥 *Personas:* ${formData.personas}\n📞 *Contacto:* ${formData.contacto}\n\n¡Nos vemos pronto! 🥂`;
+    const message = `¡Hola Néstor Chipana Mendoza! 👋\n\nQuiero confirmar mi asistencia :\n\n👤 Nombre: ${formData.nombre}\n📱 Celular: ${formData.contacto}\n👨👩👧👦 Personas: ${formData.personas}\n\n¡Muchas gracias!`;
     
     // Using the provided WhatsApp QR link with the text parameter
     const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
