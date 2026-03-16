@@ -148,7 +148,6 @@ const RSVPForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const phoneNumber = "51932350348";
     const message = `¡Hola Néstor Chipana Mendoza! 👋\n\n` +
       `Quiero confirmar mi asistencia a tu celebración de 50 años:\n\n` +
       `📌 *Confirmación:* ${formData.asistencia}\n` +
@@ -157,7 +156,7 @@ const RSVPForm = () => {
       `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
       `¡Muchas gracias!`;
     
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
     
     console.log('Submitting RSVP:', formData);
     console.log('Redirecting to:', whatsappUrl);
