@@ -156,7 +156,7 @@ const RSVPForm = () => {
   `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
   `¡Muchas gracias!`;
 
-const phone = "51931405072";
+const phone = "51936255371";
 
 const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     
