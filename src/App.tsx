@@ -100,13 +100,13 @@ const PhotoGallery = () => {
       
       <button 
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/40 backdrop-blur-sm rounded-full text-gold hover:bg-gold hover:text-black transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-[#000033]/40 backdrop-blur-sm rounded-full text-gold hover:bg-gold hover:text-[#000033] transition-colors"
       >
         <ChevronLeft size={24} />
       </button>
       <button 
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/40 backdrop-blur-sm rounded-full text-gold hover:bg-gold hover:text-black transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-[#000033]/40 backdrop-blur-sm rounded-full text-gold hover:bg-gold hover:text-[#000033] transition-colors"
       >
         <ChevronRight size={24} />
       </button>
@@ -139,7 +139,8 @@ const RSVPForm = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     personas: '1',
-    contacto: ''
+    contacto: '',
+    asistencia: 'Asistiré'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -147,10 +148,16 @@ const RSVPForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const message = `¡Hola Néstor Chipana Mendoza! 👋\n\nQuiero confirmar mi asistencia :\n\n👤 Nombre: ${formData.nombre}\n📱 Celular: ${formData.contacto}\n👨👩👧👦 Personas: ${formData.personas}\n\n¡Muchas gracias!`;
+    const phoneNumber = "51932350348";
+    const message = `¡Hola Néstor Chipana Mendoza! 👋\n\n` +
+      `Quiero confirmar mi asistencia a tu celebración de 50 años:\n\n` +
+      `📌 *Confirmación:* ${formData.asistencia}\n` +
+      `👤 *Nombre:* ${formData.nombre}\n` +
+      `📱 *Celular:* ${formData.contacto}\n` +
+      `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
+      `¡Muchas gracias!`;
     
-    // Using the provided WhatsApp QR link with the text parameter
-    const whatsappUrl = `https://wa.me/qr/6RFCERSFATCJK1?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
     console.log('Submitting RSVP:', formData);
     console.log('Redirecting to:', whatsappUrl);
@@ -171,6 +178,18 @@ const RSVPForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6 text-left">
+      <div className="space-y-2">
+        <label className="text-gold text-xs uppercase tracking-widest font-display">Confirmación</label>
+        <select 
+          value={formData.asistencia}
+          onChange={(e) => setFormData({...formData, asistencia: e.target.value})}
+          className="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors font-sans"
+          disabled={isSubmitting}
+        >
+          <option value="Asistiré" className="bg-[#000033]">Asistiré</option>
+          <option value="No podré asistir" className="bg-[#000033]">No podré asistir</option>
+        </select>
+      </div>
       <div className="space-y-2">
         <label className="text-gold text-xs uppercase tracking-widest font-display">Nombres</label>
         <input 
@@ -249,7 +268,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black selection:bg-gold/30 overflow-x-hidden">
+    <div className="min-h-screen bg-[#000033] selection:bg-gold/30 overflow-x-hidden">
       <AnimatePresence mode="wait">
         {view === 'cover' ? (
           <motion.section 
@@ -262,7 +281,7 @@ export default function App() {
           >
             {/* Background Overlay */}
             <div className="absolute inset-0 z-0">
-              <div className="absolute inset-0 bg-black/60 z-10" />
+              <div className="absolute inset-0 bg-[#000033]/60 z-10" />
               <img 
                 src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773590398/MONTAJE_rg2rb3.jpg" 
                 className="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow"
@@ -294,7 +313,7 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openInvitation}
-                className="px-8 py-3 border border-gold text-gold font-display tracking-widest uppercase text-sm hover:bg-gold hover:text-black transition-all duration-500 flex items-center gap-2 mx-auto"
+                className="px-8 py-3 border border-gold text-gold font-display tracking-widest uppercase text-sm hover:bg-gold hover:text-[#000033] transition-all duration-500 flex items-center gap-2 mx-auto"
               >
                 Abrir Invitación
                 <ChevronDown size={18} className="animate-bounce" />
@@ -310,7 +329,7 @@ export default function App() {
             className="p-4 md:p-8 min-h-screen flex justify-center"
           >
             {/* Marco Elegante */}
-            <div className="relative w-full max-w-4xl bg-black border-[12px] md:border-[20px] gold-border shadow-[0_0_50px_rgba(212,175,55,0.15)] overflow-hidden">
+            <div className="relative w-full max-w-4xl bg-[#000033] border-[12px] md:border-[20px] gold-border shadow-[0_0_50px_rgba(212,175,55,0.15)] overflow-hidden">
               
               {/* Contenido de la Invitación */}
               <div className="relative z-10">
