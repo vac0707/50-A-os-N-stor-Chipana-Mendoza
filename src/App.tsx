@@ -148,17 +148,15 @@ const RSVPForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
- const message = `¡Hola Néstor Chipana Mendoza! 👋\n\n` +
-  `Quiero confirmar mi asistencia a tu celebración de 50 años:\n\n` +
-  `📌 *Confirmación:* ${formData.asistencia}\n` +
-  `👤 *Nombre:* ${formData.nombre}\n` +
-  `📱 *Celular:* ${formData.contacto}\n` +
-  `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
-  `¡Muchas gracias!`;
-
-const phone = "51936255371";
-
-const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+    const message = `¡Hola Néstor Chipana Mendoza! 👋\n\n` +
+      `Quiero confirmar mi asistencia a tu celebración de 50 años:\n\n` +
+      `📌 *Confirmación:* ${formData.asistencia}\n` +
+      `👤 *Nombre:* ${formData.nombre}\n` +
+      `📱 *Celular:* ${formData.contacto}\n` +
+      `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
+      `¡Muchas gracias!`;
+    
+    const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
     
     console.log('Submitting RSVP:', formData);
     console.log('Redirecting to:', whatsappUrl);
@@ -284,7 +282,7 @@ export default function App() {
             <div className="absolute inset-0 z-0">
               <div className="absolute inset-0 bg-[#000033]/60 z-10" />
               <img 
-                src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773590398/MONTAJE_rg2rb3.jpg" 
+                src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773767005/MONTAJE-02_rri3l8.jpg" 
                 className="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow"
                 alt="Background"
                 referrerPolicy="no-referrer"
@@ -337,7 +335,7 @@ export default function App() {
                 {/* Foto Principal en el Marco */}
                 <div className="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
                   <img 
-                    src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773590398/MONTAJE_rg2rb3.jpg" 
+                    src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773767005/MONTAJE-02_rri3l8.jpg" 
                     className="w-full h-full object-cover"
                     alt="Néstor Chipana"
                     referrerPolicy="no-referrer"
