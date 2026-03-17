@@ -156,8 +156,10 @@ const RSVPForm = () => {
       `👨👩👧👦 *Personas:* ${formData.personas}\n\n` +
       `¡Muchas gracias!`;
     
-    const whatsappUrl = `https://wa.me/qr/R54BSAK2QVLTB1?text=${encodeURIComponent(message)}`;
     
+    const phone = "51936255371";
+
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
     console.log('Submitting RSVP:', formData);
     console.log('Redirecting to:', whatsappUrl);
 
