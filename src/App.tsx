@@ -284,7 +284,7 @@ export default function App() {
             <div className="absolute inset-0 z-0">
               <div className="absolute inset-0 bg-[#000033]/60 z-10" />
               <img 
-                src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773767005/MONTAJE-02_rri3l8.jpg" 
+                src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773931628/montaje3_gt1c6c.jpg" 
                 className="w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow"
                 alt="Background"
                 referrerPolicy="no-referrer"
@@ -337,7 +337,7 @@ export default function App() {
                 {/* Foto Principal en el Marco */}
                 <div className="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
                   <img 
-                    src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773767005/MONTAJE-02_rri3l8.jpg" 
+                    src="https://res.cloudinary.com/dcnynnstm/image/upload/v1773931628/montaje3_gt1c6c.jpg" 
                     className="w-full h-full object-cover"
                     alt="Néstor Chipana"
                     referrerPolicy="no-referrer"
