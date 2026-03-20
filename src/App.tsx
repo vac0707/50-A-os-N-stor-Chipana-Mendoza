@@ -158,7 +158,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
 
 const PhotoGallery = () => {
   const photos = [
-    "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",
+    /*"https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",*/
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00190_q7i5kr.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00220_lqe7e9.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593802/DSC00174_gtfif0.jpg",
