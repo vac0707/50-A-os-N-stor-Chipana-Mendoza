@@ -15,10 +15,88 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Heart
+  Heart,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 
 // --- Components ---
+
+const MusicPlayer = ({ url }: { url: string }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(err => console.error("Error playing audio:", err));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      <audio ref={audioRef} src={url} loop />
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={togglePlay}
+        className="w-14 h-14 rounded-full bg-[#000033]/80 backdrop-blur-md border border-gold/50 flex items-center justify-center text-gold shadow-2xl shadow-gold/20 group"
+      >
+        {isPlaying ? (
+          <motion.div
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <Volume2 size={28} />
+          </motion.div>
+        ) : (
+          <VolumeX size={28} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+        )}
+      </motion.button>
+    </div>
+  );
+};
+
+const ConfettiOverlay = () => {
+  const particles = Array.from({ length: 40 });
+  return (
+    <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
+      {particles.map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ 
+            top: -20, 
+            left: `${Math.random() * 100}%`,
+            rotate: 0,
+            opacity: 0
+          }}
+          animate={{ 
+            top: '110%',
+            left: `${(Math.random() * 10 - 5) + (i * 2.5)}%`,
+            rotate: 720,
+            opacity: [0, 1, 1, 0]
+          }}
+          transition={{ 
+            duration: Math.random() * 8 + 7, 
+            repeat: Infinity, 
+            ease: "linear",
+            delay: Math.random() * 15
+          }}
+          className="absolute w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+          style={{
+            background: i % 3 === 0 ? '#D4AF37' : i % 3 === 1 ? '#F5E6BE' : '#B8860B',
+            width: Math.random() * 3 + 2,
+            height: Math.random() * 3 + 2,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const Countdown = ({ targetDate }: { targetDate: string }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -270,6 +348,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#000033] selection:bg-gold/30 overflow-x-hidden">
+      <MusicPlayer url="https://res.cloudinary.com/dcnynnstm/video/upload/v1774017473/COQUITA_CHAPIMARCA_VIDEO_OFICIAL_vagdcw.mp3" />
+      <ConfettiOverlay />
       <AnimatePresence mode="wait">
         {view === 'cover' ? (
           <motion.section 
