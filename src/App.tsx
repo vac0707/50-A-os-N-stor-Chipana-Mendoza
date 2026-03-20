@@ -22,9 +22,17 @@ import {
 
 // --- Components ---
 
-const MusicPlayer = ({ url }: { url: string }) => {
+const MusicPlayer = ({ url, autoPlay }: { url: string, autoPlay?: boolean }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (autoPlay && audioRef.current && !isPlaying) {
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(err => console.log("Autoplay blocked or failed:", err));
+    }
+  }, [autoPlay]);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -150,7 +158,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
 
 const PhotoGallery = () => {
   const photos = [
-  /*"https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",*/
+    "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00190_q7i5kr.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00220_lqe7e9.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593802/DSC00174_gtfif0.jpg",
@@ -348,7 +356,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#000033] selection:bg-gold/30 overflow-x-hidden">
-      <MusicPlayer url="https://res.cloudinary.com/dcnynnstm/video/upload/v1774017473/COQUITA_CHAPIMARCA_VIDEO_OFICIAL_vagdcw.mp3" />
+      <MusicPlayer 
+        url="https://res.cloudinary.com/dcnynnstm/video/upload/v1774017473/COQUITA_CHAPIMARCA_VIDEO_OFICIAL_vagdcw.mp3" 
+        autoPlay={view === 'invitation'}
+      />
       <ConfettiOverlay />
       <AnimatePresence mode="wait">
         {view === 'cover' ? (
