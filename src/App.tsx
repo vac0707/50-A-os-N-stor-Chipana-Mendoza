@@ -518,7 +518,7 @@ export default function App() {
                       </p>
                       <div className="flex items-center justify-center gap-2 text-gold/80">
                         <Clock size={16} />
-                        <span className="font-sans tracking-widest uppercase text-sm">5:00 PM</span>
+                        <span className="font-sans tracking-widest uppercase text-sm">4:00 PM</span>
                       </div>
                       <a 
                         href="https://maps.app.goo.gl/saNQ4Z6HymB169Ca8" 
