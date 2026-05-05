@@ -158,7 +158,7 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
 
 const PhotoGallery = () => {
   const photos = [
-    /*"https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",*/
+    "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00168_fjcqly.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00190_q7i5kr.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593801/DSC00220_lqe7e9.jpg",
     "https://res.cloudinary.com/dcnynnstm/image/upload/v1773593802/DSC00174_gtfif0.jpg",
@@ -455,9 +455,9 @@ export default function App() {
                     className="text-center"
                   >
                     <SectionTitle title="Faltan" icon={Clock} />
-                    <Countdown targetDate="2026-04-18T17:00:00" />
+                    <Countdown targetDate="2027-04-18T17:00:00" />
                     <p className="font-display text-gold/60 tracking-widest uppercase text-sm">
-                      18 de Abril de 2026
+                      18 de Abril de 2027
                     </p>
                   </motion.section>
 
@@ -518,7 +518,7 @@ export default function App() {
                       </p>
                       <div className="flex items-center justify-center gap-2 text-gold/80">
                         <Clock size={16} />
-                        <span className="font-sans tracking-widest uppercase text-sm">4:00 PM</span>
+                        <span className="font-sans tracking-widest uppercase text-sm">5:00 PM</span>
                       </div>
                       <a 
                         href="https://maps.app.goo.gl/saNQ4Z6HymB169Ca8" 
